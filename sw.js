@@ -23,7 +23,7 @@ self.addEventListener('activate', function(event) {
   event.waitUntil(
     caches.keys()
       .then(function(keys) {
-        return Promise.all(keys.filter(function(key) { return key !== CACHE_NAME; }).map(function(key) { return caches.delete(key); }));
+        return Promise.all(keys.filter(function(key) { return key.indexOf('bai-14-thth-') === 0 && key !== CACHE_NAME; }).map(function(key) { return caches.delete(key); }));
       })
       .then(function() { return self.clients.claim(); })
   );
